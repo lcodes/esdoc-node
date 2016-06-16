@@ -1,21 +1,21 @@
 'use strict';
 
-let test = require('tape');
-let code = require('./index').onHandleCode;
+var test = require('tape');
+var code = require('./index').onHandleCode;
 
-let f = s => {
+var f = function(s) {
   let ev = {data: {code: s}};
   code(ev);
   return ev.data.code;
 };
 
-test('export default', t => {
+test('export default', function(t) {
   t.plan(1);
   t.equals(f('module . exports = hello;'),
            'export default hello;');
 });
 
-test('export class|function', t => {
+test('export class|function', function(t) {
   t.plan(2);
   t.equals(f('exports . Hello = class Hello {};'),
            'export class Hello {};');
@@ -23,13 +23,13 @@ test('export class|function', t => {
            'export function world () {};');
 });
 
-test('export { named };', t => {
+test('export { named };', function(t) {
   t.plan(1);
   t.equals(f('exports . some = some;'),
            'export { some };');
 });
 
-test('export let', t => {
+test('export let', function(t) {
   t.plan(1);
   t.equals(f('exports . hello = "world";'),
            'export let hello = "world";');
