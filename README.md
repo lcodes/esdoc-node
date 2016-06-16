@@ -23,6 +23,8 @@ It converts the input of esdoc so that node.js' `exports` and
 
 This table shows the translation rules:
 
+| Before                                    | After                            |
+|-------------------------------------------|----------------------------------|
 |`module.exports = ...;`                    |`export default ...;`             |
 |`exports.Hello = class Hello { ... };`     |`export class Hello { ... };`     |
 |`exports.world = function world() { ... };`|`export function world() { ... };`|
