@@ -1,5 +1,7 @@
 # esdoc-node
 
+[![](https://travis-ci.org/ddude/esdoc-node.svg)](https://travis-ci.org/ddude/esdoc-node)
+
 ## Usage
 
 Get the package:
