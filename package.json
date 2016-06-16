@@ -1,0 +1,26 @@
+{
+  "name": "esdoc-node",
+  "version": "1.0.0",
+  "description": "Allows esdoc to use node.js exports and module.exports.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddude/esdoc-node.git"
+  },
+  "keywords": [
+    "esdoc",
+    "node"
+  ],
+  "author": "Jeremie Pelletier",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ddude/esdoc-node/issues"
+  },
+  "homepage": "https://github.com/ddude/esdoc-node#readme",
+  "devDependencies": {
+    "tape": "^4.5.1"
+  }
+}
