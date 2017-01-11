@@ -15,15 +15,15 @@ test('export default', function(t) {
            'export default hello;');
 });
 
-test('export default', function(t) {
+test('export list', function(t) {
   t.plan(1);
   t.equals(f('module . exports = { hello, world };'),
       'export { hello, world };');
 });
 
-test('export default', function(t) {
+test('export named list', function(t) {
   t.plan(1);
-  t.equals(f('module . exports = { hi: hello, earth: world };'),
+  t.equals(f('module . exports = { hi: hello, earth :world };'),
       'export { hello as hi, world as earth };');
 });
 
