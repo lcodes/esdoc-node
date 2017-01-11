@@ -29,6 +29,12 @@ test('export { named };', function(t) {
            'export { some };');
 });
 
+test('export { named };', function(t) {
+  t.plan(1);
+  t.equals(f('exports . some = some; exports . someOther = someOther;'),
+      'export { some }; export { someOther };');
+});
+
 test('export let', function(t) {
   t.plan(1);
   t.equals(f('exports . hello = "world";'),
