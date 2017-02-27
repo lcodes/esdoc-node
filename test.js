@@ -15,6 +15,18 @@ test('export default', function(t) {
            'export default hello;');
 });
 
+test('export list', function(t) {
+  t.plan(1);
+  t.equals(f('module . exports = { hello, world };'),
+      'export { hello, world };');
+});
+
+test('export named list', function(t) {
+  t.plan(1);
+  t.equals(f('module . exports = { hi: hello, earth :world };'),
+      'export { hello as hi, world as earth };');
+});
+
 test('export class|function', function(t) {
   t.plan(2);
   t.equals(f('exports . Hello = class Hello {};'),
@@ -27,6 +39,12 @@ test('export { named };', function(t) {
   t.plan(1);
   t.equals(f('exports . some = some;'),
            'export { some };');
+});
+
+test('export { named };', function(t) {
+  t.plan(1);
+  t.equals(f('exports . some = some; exports . someOther = someOther;'),
+      'export { some }; export { someOther };');
 });
 
 test('export let', function(t) {
