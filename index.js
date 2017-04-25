@@ -14,6 +14,6 @@ exports.onHandleCode = function onHandleCode(ev) {
              'export $2 $1')
     .replace(/exports\s*\.\s*([_\d\w]+)\s*=\s*\1\s*;/g,
              'export { $1 };')
-    .replace(/exports\s*\.\s*([_\d\w]+)\s*=/,
+    .replace(/exports\s*\.\s*([_\d\w]+)\s*=/g,
              'export let $1 =');
 };

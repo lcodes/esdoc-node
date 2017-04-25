@@ -52,3 +52,9 @@ test('export let', function(t) {
   t.equals(f('exports . hello = "world";'),
            'export let hello = "world";');
 });
+
+test('export let multiple', function(t) {
+  t.plan(1);
+  t.equals(f('exports . some = "some"; exports . someOther = "someOther";'),
+           'export let some = "some"; export let someOther = "someOther";');
+});
