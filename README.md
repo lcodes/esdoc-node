@@ -1,6 +1,6 @@
 # esdoc-node
 
-[![](https://travis-ci.org/ddude/esdoc-node.svg)](https://travis-ci.org/ddude/esdoc-node)
+[![](https://travis-ci.org/lcodes/esdoc-node.svg)](https://travis-ci.org/lcodes/esdoc-node)
 
 ## Usage
 
@@ -21,7 +21,7 @@ Add the following to your esdoc config file:
 ## What it does
 
 It converts the input of esdoc so that node.js' `exports` and
-`module.exports` becomes ES6's `export`.
+`module.exports` becomes ES6's `export`, and `require` becomes `import`.
 
 This table shows the translation rules:
 
@@ -32,3 +32,6 @@ This table shows the translation rules:
 |`exports.world = function world() { ... };`|`export function world() { ... };`|
 |`exports.value = value;`                   |`export { value };`               |
 |`exports.value = ...;`                     |`export let value = ...;`         |
+|`const value = require(...)`               |`import value from '...';`        |
+|`const { one, two } = require(...)`        |`import { one, two} from '...';`  |
+|`require(...)`                             |`import '...';`                   |
