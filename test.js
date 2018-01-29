@@ -58,3 +58,39 @@ test('export let multiple', function(t) {
   t.equals(f('exports . some = "some"; exports . someOther = "someOther";'),
            'export let some = "some"; export let someOther = "someOther";');
 });
+
+test('variable = require', function(t) {
+  t.plan(3);
+  t.equals(f('const esdoc = require("esdoc");'),
+           'import esdoc from "esdoc";');
+  t.equals(f('let esdoc = require("esdoc");'),
+           'import esdoc from "esdoc";');
+  t.equals(f('var esdoc = require("esdoc");'),
+           'import esdoc from "esdoc";');
+});
+
+test('{ named } = require', function(t) {
+  t.plan(3);
+  t.equals(f('const { esdoc } = require("esdoc");'),
+           'import { esdoc } from "esdoc";');
+  t.equals(f('let { esdoc } = require("esdoc");'),
+           'import { esdoc } from "esdoc";');
+  t.equals(f('var { esdoc } = require("esdoc");'),
+           'import { esdoc } from "esdoc";');
+});
+
+test('{ named } = require multiple', function(t) {
+  t.plan(3);
+  t.equals(f('const { esdoc, another, named, module } = require("esdoc");'),
+           'import { esdoc, another, named, module } from "esdoc";');
+  t.equals(f('let { esdoc, another, named, module } = require("esdoc");'),
+           'import { esdoc, another, named, module } from "esdoc";');
+  t.equals(f('var { esdoc, another, named, module } = require("esdoc");'),
+           'import { esdoc, another, named, module } from "esdoc";');
+});
+
+test('require', function(t) {
+  t.plan(1);
+  t.equals(f('require("esdoc");'),
+           'import "esdoc";');
+});

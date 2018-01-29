@@ -15,5 +15,11 @@ exports.onHandleCode = function onHandleCode(ev) {
     .replace(/exports\s*\.\s*([_\d\w]+)\s*=\s*\1\s*;/g,
              'export { $1 };')
     .replace(/exports\s*\.\s*([_\d\w]+)\s*=/g,
-             'export let $1 =');
+             'export let $1 =')
+    .replace(/^(?:const|var|let)\s(\w+)\s*=\s*require\s*\(\s*(.*?)\s*\)/gm,
+             'import $1 from $2')
+    .replace(/^(?:const|var|let)\s*(\{(?:[\s\S]*?)\})\s*=\s*require\s*\(\s*(.*?)\s*\)/gm,
+             'import $1 from $2')
+    .replace(/^require\s*\(\s*(.*?)\s*\)/gm,
+             'import $1');
 };
