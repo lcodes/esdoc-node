@@ -1,6 +1,6 @@
 {
   "name": "esdoc-node",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Allows esdoc to use node.js exports and module.exports.",
   "main": "index.js",
   "scripts": {
