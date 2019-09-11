@@ -27,7 +27,18 @@ exports.onHandleCode = function onHandleCode(ev) {
         return 'import ' + a + ' from ' + b + c;
       })
     .replace(/^(?:const|var|let)\s*(\{(?:[\s\S]*?)\})\s*=\s*require\s*\(\s*(.*?)\s*\)/gm,
-      'import $1 from $2')
+      (str, a, b) => {
+      // test case -  const {name:other/name} = require('name');
+        if (/{\s*(\w+):\s*(\w+)\s*}/gm.test(a)) {
+          const [full, key, value] = a.match(/{\s*(\w+):\s*(\w+)\s*}/s);
+          return `import ${key} as ${value} from ${b}`;
+        }
+        // test case -  const {name} = require('name');
+        if (/{\s*\w+\s*}/s.test(a)) {
+          const [full] = a.match(/{\s*\w+\s*}/s);
+          return `import ${full} from ${b}`;
+        }
+      })
     .replace(/^require\s*\(\s*(.*?)\s*\)(.*?)$/gm,
       function(str, a, b) {
         var next = b.substring(0, 1);
