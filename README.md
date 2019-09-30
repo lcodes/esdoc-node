@@ -34,4 +34,7 @@ This table shows the translation rules:
 |`exports.value = ...;`                     |`export let value = ...;`         |
 |`const value = require(...)`               |`import value from '...';`        |
 |`const { one, two } = require(...)`        |`import { one, two} from '...';`  |
+|`const { one: two } = require(...)`        |`import { one as two} from '...';`|
+|`const { one: { two } } = require(...)`    |`import * as random from '...';`  |
+|                                           |`const { one: { two } } = random;`|
 |`require(...)`                             |`import '...';`                   |

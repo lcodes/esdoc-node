@@ -79,22 +79,12 @@ test('variable = require w/ suffix', function(t) {
 
 test('{ named } = require', function(t) {
   t.plan(3);
-  t.equals(f('const { esdoc } = require("esdoc");'),
-    'import { esdoc } from "esdoc";');
-  t.equals(f('let { esdoc } = require("esdoc");'),
-    'import { esdoc } from "esdoc";');
-  t.equals(f('var { esdoc } = require("esdoc");'),
-    'import { esdoc } from "esdoc";');
-});
-
-test('{ named } = require multiple', function(t) {
-  t.plan(3);
-  t.equals(f('const { esdoc, another, named, module } = require("esdoc");'),
-    'import { esdoc, another, named, module } from "esdoc";');
-  t.equals(f('let { esdoc, another, named, module } = require("esdoc");'),
-    'import { esdoc, another, named, module } from "esdoc";');
-  t.equals(f('var { esdoc, another, named, module } = require("esdoc");'),
-    'import { esdoc, another, named, module } from "esdoc";');
+  t.equals(f('const { esdoc: doc } = require("esdoc");'),
+    'import { esdoc as  doc } from "esdoc";');
+  t.equals(f('let { esdoc: doc } = require("esdoc");'),
+    'import { esdoc as  doc } from "esdoc";');
+  t.equals(f('var { esdoc: doc } = require("esdoc");'),
+    'import { esdoc as  doc } from "esdoc";');
 });
 
 test('require', function(t) {
